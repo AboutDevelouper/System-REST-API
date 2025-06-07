@@ -20,12 +20,10 @@ process.on("unhandledRejection", (reason, promise) => {
   }
 });
 
-app.use(express.static(path.join(__dirname, 'src', 'docs', 'static')));
-app.use("/static", express.static(path.join(__dirname, "docs", "static")));
-app.use(express.json(path.join(__dirname, 'src', 'docs', 'static', 'json')));
-app.use(express.static(path.join(__dirname, 'src', 'docs', 'static', 'css')));
-app.use(express.static(path.join(__dirname, 'src', 'docs', 'static', 'image')));
-app.use(express.static(path.join(__dirname, 'src', 'docs', 'static', 'scripts')));
+app.use(express.json(path.join(__dirname, 'src', 'public', 'json')));
+app.use(express.static(path.join(__dirname, 'src', 'public', 'css')));
+app.use(express.static(path.join(__dirname, 'src', 'public', 'image')));
+app.use(express.static(path.join(__dirname, 'src', 'public', 'scripts')));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
@@ -42,7 +40,7 @@ for (const file of files) {
 };
 
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, 'src', 'docs', 'static', '404.html'));
+  res.status(404).sendFile(path.join(__dirname, 'src', 'public', '404.html'));
 });
 
 try {
