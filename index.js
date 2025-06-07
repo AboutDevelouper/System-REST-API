@@ -20,10 +20,12 @@ process.on("unhandledRejection", (reason, promise) => {
   }
 });
 
+app.use(express.static(path.join(__dirname, 'src', 'public')));
 app.use(express.json(path.join(__dirname, 'src', 'public', 'json')));
 app.use(express.static(path.join(__dirname, 'src', 'public', 'css')));
-app.use(express.static(path.join(__dirname, 'src', 'public', 'image')));
+app.use(express.static(path.join(__dirname, 'src', 'public', 'images')));
 app.use(express.static(path.join(__dirname, 'src', 'public', 'scripts')));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
